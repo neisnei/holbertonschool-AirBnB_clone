@@ -11,10 +11,12 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
+    @property
     def __file_path(self):
         """Getter for __file_path"""
         return FileStorage.__file_path
 
+    @property
     def __objects(self):
         """Getter for __objects"""
         return FileStorage.__objects
@@ -27,8 +29,9 @@ class FileStorage:
         """Sets in __objects the obj with key <obj class name>.id
         Args:
             obj: object to set in __objects"""
-        key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        FileStorage.__objects[key] = obj
+        if obj:
+            key = "{}.{}".format(obj.__class__.__name__, obj.id)
+            FileStorage.__objects[key] = obj
 
     def save(self):
         """Serializes __objects to the JSON file (path: __file_path)"""
