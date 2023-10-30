@@ -3,6 +3,7 @@
     and deserializes JSON file to instances:"""
 
 import json
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -10,16 +11,6 @@ class FileStorage:
     and deserializes JSON file to instances:"""
     __file_path = "file.json"
     __objects = {}
-
-    @property
-    def __file_path(self):
-        """Getter for __file_path"""
-        return FileStorage.__file_path
-
-    @property
-    def __objects(self):
-        """Getter for __objects"""
-        return FileStorage.__objects
 
     def all(self):
         """Returns the dictionary __objects"""
