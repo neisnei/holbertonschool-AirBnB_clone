@@ -2,7 +2,7 @@
 """This module defines a class BaseModel"""
 import uuid
 from datetime import datetime
-import models
+from models import storage
 
 
 class BaseModel:
@@ -16,30 +16,34 @@ class BaseModel:
         attributes:
             id: unique id for each instance
             created_at: creation date
-            updated_at: date of last update"""
+            updated_at: date of last update
+            storage: instance of FileStorage class"""
         if kwargs:
             for key, value in kwargs.items():
                 if key == '__class__':
                     continue
                 elif key == 'created_at' or key == 'updated_at':
-                    setattr(self, key, datetime.strptime(value,
-                                                         '%Y-%m-%dT%H:%M:%S.%f'))
+                    setattr(self, key,
+                            datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
                 else:
                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            storage.new(self)
 
     def __str__(self):
-        """This method returns a string representation of a BaseModel instance"""
+        """This method returns a string representation of a BaseModel
+        instance"""
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
     def save(self):
         """This method updates the public instance attribute updated_at
-        with the current datetime"""
+        with the current datetime when the object is saved"""
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """This method returns a dictionary containing all keys/values
