@@ -11,6 +11,14 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
+    def __file_path(self):
+        """Getter for __file_path"""
+        return FileStorage.__file_path
+
+    def __objects(self):
+        """Getter for __objects"""
+        return FileStorage.__objects
+
     def all(self):
         """Returns the dictionary __objects"""
         return FileStorage.__objects

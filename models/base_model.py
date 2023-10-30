@@ -2,7 +2,7 @@
 """This module defines a class BaseModel"""
 import uuid
 from datetime import datetime
-from models import storage
+from models import file_storage as storage
 
 
 class BaseModel:
