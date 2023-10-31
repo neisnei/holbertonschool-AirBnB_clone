@@ -3,6 +3,8 @@
     and deserializes JSON file to instances:"""
 
 import json
+import os.path
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -32,10 +34,7 @@ class FileStorage:
         """Deserializes the JSON file to __objects (only if the JSON file
         (__file_path) exists ; otherwise, do nothing. If the file doesn’t
         exist, no exception should be raised)"""
-        try:
+        if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r') as f:
-                FileStorage.__objects = {key: val.from_dict()
-                                         for key, val in
-                                         json.load(f).items()}
-        except FileNotFoundError:
-            pass
+                FileStorage.__objects = {k: BaseModel(
+                    **v) for k, v in json.load(f).items()}
