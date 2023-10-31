@@ -9,13 +9,17 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb)'
 
+    def do_help(self, arg):
+        """Help command to show the documentation of the commands."""
+        cmd.Cmd.do_help(self, arg)
+
     def do_quit(self, arg):
         """Quit command to exit the program."""
         return True
 
     def do_EOF(self, arg):
         """EOF command to exit the program."""
-        print()
+        print("")
         return True
 
     def emptyline(self):
