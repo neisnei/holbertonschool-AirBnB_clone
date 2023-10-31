@@ -9,7 +9,7 @@ import os.path
 class FileStorage:
     """Class that serializes instances to a JSON file
     and deserializes JSON file to instances:"""
-    __file_path = "file.json"
+    __file_path = 'file.json'
     __objects = {}
 
     def all(self):
@@ -20,7 +20,7 @@ class FileStorage:
         """Sets in __objects the obj with key <obj class name>.id
         Args:
             obj: object to set in __objects"""
-        key = "{}.{}".format(type(obj).__name__, obj.id)
+        key = "{}.{}".format(type(obj).__class__.__name__, obj.id)
         FileStorage.__objects[key] = obj
 
     def save(self):
@@ -38,5 +38,3 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as f:
                 FileStorage.__objects = {k: BaseModel(
                     **v) for k, v in json.load(f).items()}
-        else:
-            pass
