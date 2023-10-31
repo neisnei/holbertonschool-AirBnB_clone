@@ -2,7 +2,6 @@
 """This module defines a class HBNBCommand"""
 
 import cmd
-from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -10,11 +9,11 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb)'
 
-    def do_quit(self, arg):
+    def do_quit(self):
         """Quit command to exit the program."""
         return True
 
-    def do_EOF(self, arg):
+    def do_EOF(self):
         """EOF command to exit the program."""
         print()
         return True
