@@ -38,3 +38,5 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as f:
                 FileStorage.__objects = {k: BaseModel(
                     **v) for k, v in json.load(f).items()}
+        else:
+            pass
