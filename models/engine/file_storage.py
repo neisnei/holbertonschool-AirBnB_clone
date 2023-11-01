@@ -13,7 +13,7 @@ class FileStorage:
     __objects = {}
 
     def all(self, cls=None):
-        """Returns the dictionary __objects"""
+        """Returns the dictionary of all objects"""
         if cls:
             return {key: value for key, value in FileStorage.__objects.items()
                     if isinstance(value, cls)}
