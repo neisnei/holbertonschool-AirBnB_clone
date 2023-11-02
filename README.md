@@ -172,3 +172,7 @@ EOF  help  quit
 (hbnb) 
 $
 ```
+
+### AUTHORS
+Hector Vazquez
+Neischaly Ruidiaz
