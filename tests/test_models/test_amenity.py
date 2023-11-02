@@ -4,17 +4,14 @@ import unittest
 from models.amenity import Amenity
 from tests.test_models.test_base_model import test_basemodel
 import models
-from models.base_model import BaseModel
-from models.city import City
-from models.place import Place
-from models.state import State
-from models.review import Review
 from datetime import datetime
 from models.base_model import Base
 from models.base_model import BaseModel
-from models.engine.db_storage import DBStorage
-from models.engine.file_storage import FileStorage
 
+
+class TestAmenity(unittest.TestCase):
+    def setUp(self):
+        self.amenity = Amenity()
 
 class TestAmenity(unittest.TestCase):
     def setUp(self):
