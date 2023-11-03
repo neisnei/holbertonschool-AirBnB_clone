@@ -101,7 +101,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances based or not on
         the class name."""
         if arg not in ["BaseModel", "User", "Place", "State", "City",
-                       "Amenity", "Review"]:
+                       "Amenity", "Review", ""]:
             print("** class doesn't exist **")
         else:
             for key, value in storage.all().items():
