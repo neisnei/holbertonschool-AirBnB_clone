@@ -83,3 +83,7 @@ class TestFileStorage(unittest.TestCase):
             for line in r:
                 self.assertEqual(line, "{}")
         self.assertIs(a_storage.reload(), None)
+
+
+if __name__ == '__main__':
+    unittest.main()
