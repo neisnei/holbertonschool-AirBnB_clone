@@ -12,6 +12,7 @@ from models.base_model import BaseModel
 import unittest
 from models.amenity import Amenity
 
+
 class TestAmenity(unittest.TestCase):
     """Unit tests for the Amenity class"""
 
@@ -20,6 +21,7 @@ class TestAmenity(unittest.TestCase):
         amenity = Amenity()
         self.assertIsInstance(amenity, Amenity)
         self.assertEqual(amenity.name, "")
+
 
 if __name__ == '__main__':
     unittest.main()

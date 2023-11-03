@@ -4,16 +4,19 @@ import unittest
 from tests.test_models.test_base_model import test_basemodel
 from models.place import Place
 
+
 class TestPlace(unittest.TestCase):
     def setUp(self):
         self.place = Place()
 
     def test_city_id_attribute(self):
-        """Verify that the city_id attribute is initialized as an empty string"""
+        """Verify that the city_id attribute is initialized
+        as an empty string"""
         self.assertEqual(self.place.city_id, "")
 
     def test_user_id_attribute(self):
-        """Verify that the user_id attribute is initialized as an empty string"""
+        """Verify that the user_id attribute is initialized
+        as an empty string"""
         self.assertEqual(self.place.user_id, "")
 
     def test_name_attribute(self):
@@ -21,7 +24,8 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(self.place.name, "")
 
     def test_description_attribute(self):
-        """Verify that the description attribute is initialized as an empty string"""
+        """Verify that the description attribute is initialized
+        as an empty string"""
         self.assertEqual(self.place.description, "")
 
     def test_number_rooms_attribute(self):
@@ -49,8 +53,10 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(self.place.longitude, 0.0)
 
     def test_amenity_ids_attribute(self):
-        """Verify that the amenity_ids attribute is initialized as an empty list"""
+        """Verify that the amenity_ids attribute is initialized
+        as an empty list"""
         self.assertEqual(self.place.amenity_ids, [])
+
 
 if __name__ == '__main__':
     unittest.main()

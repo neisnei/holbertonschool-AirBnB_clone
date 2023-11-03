@@ -4,7 +4,10 @@ import unittest
 from tests.test_models.test_base_model import test_basemodel
 from models.user import User
 
+
 class TestUser(unittest.TestCase):
+    """Unit tests for the User class"""
+
     def setUp(self):
         self.user = User()
 
@@ -23,6 +26,7 @@ class TestUser(unittest.TestCase):
     def test_last_name_attribute(self):
         """Verify last_name attribute is initialized as an empty string"""
         self.assertEqual(self.user.last_name, "")
+
 
 if __name__ == '__main__':
     unittest.main()
