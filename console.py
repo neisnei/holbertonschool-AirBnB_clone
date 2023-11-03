@@ -164,7 +164,7 @@ class HBNBCommand(cmd.Cmd):
                 params = args[1].split('(')[1].split(')')[0].split(', ')
                 id = params[0]
                 if '{' in params[1]:
-                    attribute_dict = json.loads(', '.join(params[1:]))
+                    attribute_dict = json.loads(', '.join(params[2:]))
                     for key, value in attribute_dict.items():
                         self.do_update(args[0] + " " + id +
                                        " " + key + " " + str(value))
