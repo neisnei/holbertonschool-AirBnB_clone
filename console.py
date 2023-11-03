@@ -135,7 +135,8 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     def default(self, line):
-        """Retreives all instances of a class by using: <class name>.all()."""
+        """Method called on an input line when the command prefix is not
+        recognized"""
         if '.' in line:
             args = line.split('.')
             if 'all()' in line and args[0] in ["BaseModel", "User", "Place",
@@ -151,6 +152,11 @@ class HBNBCommand(cmd.Cmd):
                                                  "Review"]:
                 id = args[1].split('(')[1].split(')')[0]
                 self.do_show(args[0] + " " + id)
+            elif 'destroy(' in line and args[0] in ["BaseModel", "User",
+                                                    "Place", "State", "City",
+                                                    "Amenity", "Review"]:
+                id = args[1].split('(')[1].split(')')[0]
+                self.do_destroy(args[0] + " " + id)
         else:
             super().default(line)
 
