@@ -157,6 +157,15 @@ class HBNBCommand(cmd.Cmd):
                                                     "Amenity", "Review"]:
                 id = args[1].split('(')[1].split(')')[0]
                 self.do_destroy(args[0] + " " + id)
+            elif 'update(' in line and args[0] in ["BaseModel", "User", "Place",
+                                                   "State", "City", "Amenity",
+                                                   "Review"]:
+                params = args[1].split('(')[1].split(')')[0].split(', ')
+                id = params[0]
+                attribute_name = params[1]
+                attribute_value = params[2]
+                self.do_update(args[0] + " " + id + " " + attribute_name +
+                               " " + attribute_value)
         else:
             super().default(line)
 
