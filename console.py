@@ -134,6 +134,16 @@ class HBNBCommand(cmd.Cmd):
                 setattr(storage.all()[key], args[2], args[3])
                 storage.save()
 
+    def default(self, line):
+        """Retreives all instances of a class by using: <class name>.all()."""
+        if '.' in line and 'all()' in line:
+            args = line.split('.')
+            if args[0] in ["BaseModel", "User", "Place", "State", "City",
+                           "Amenity", "Review"]:
+                self.do_all(args[0])
+        else:
+            super().default(line)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
