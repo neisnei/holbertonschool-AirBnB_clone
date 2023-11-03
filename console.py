@@ -2,6 +2,7 @@
 """This module defines a class HBNBCommand"""
 
 import cmd
+import json
 from models.base_model import BaseModel
 from models.user import User
 from models.place import Place
@@ -157,15 +158,21 @@ class HBNBCommand(cmd.Cmd):
                                                     "Amenity", "Review"]:
                 id = args[1].split('(')[1].split(')')[0]
                 self.do_destroy(args[0] + " " + id)
-            elif 'update(' in line and args[0] in ["BaseModel", "User", "Place",
-                                                   "State", "City", "Amenity",
-                                                   "Review"]:
+            elif 'update(' in line and args[0] in ["BaseModel", "User",
+                                                   "Place", "State", "City",
+                                                   "Amenity", "Review"]:
                 params = args[1].split('(')[1].split(')')[0].split(', ')
                 id = params[0]
-                attribute_name = params[1]
-                attribute_value = params[2]
-                self.do_update(args[0] + " " + id + " " + attribute_name +
-                               " " + attribute_value)
+                if '{' in params[1]:
+                    attribute_dict = json.loads(', '.join(params[1:]))
+                    for key, value in attribute_dict.items():
+                        self.do_update(args[0] + " " + id + " " + key +
+                                       " " + value)
+                else:
+                    attribute_name = params[1]
+                    attribute_value = params[2]
+                    self.do_update(args[0] + " " + id + " " + attribute_name +
+                                   " " + attribute_value)
         else:
             super().default(line)
 
