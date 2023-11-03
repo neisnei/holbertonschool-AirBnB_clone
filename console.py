@@ -136,13 +136,24 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         """Retreives all instances of a class by using: <class name>.all()."""
-        if '.' in line and 'all()' in line:
+        if '.' in line:
             args = line.split('.')
-            if args[0] in ["BaseModel", "User", "Place", "State", "City",
-                           "Amenity", "Review"]:
+            if 'all()' in line and args[0] in ["BaseModel", "User", "Place", "State", "City",
+                                               "Amenity", "Review"]:
                 self.do_all(args[0])
+            elif 'count()' in line and args[0] in ["BaseModel", "User", "Place", "State", "City",
+                                                   "Amenity", "Review"]:
+                self.do_count(args[0])
         else:
             super().default(line)
+
+    def do_count(self, arg):
+        """Retreives the number of instances of a class: <class name>.count()."""
+        count = 0
+        for key in storage.all():
+            if arg in key:
+                count += 1
+        print(count)
 
 
 if __name__ == '__main__':
