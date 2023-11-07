@@ -26,9 +26,9 @@ class TestFileStorage(unittest.TestCase):
         cls.rev1.user_id = "Greg"
         cls.rev1.text = "Grade A"
 
-    @classmethod
-    def teardown(cls):
-        del cls.rev1
+    # @classmethod
+    # def teardown(cls):
+        # del cls.rev1
 
     def teardown(self):
         try:
