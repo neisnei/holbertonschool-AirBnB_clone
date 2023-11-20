@@ -1,28 +1,21 @@
-places {
-    display: block;
-    text-align: center;
-    margin: 45px auto;
+.places {
+  margin-top: 30px;
 }
-h1 {
-    float: left;
-    width: 100%;
-    text-align: left;
-    font-size: 30px;
-    margin-top: 0px;
-    margin-left: 20px;
-    margin-bottom: 5px;
-    display: block
+
+.places h1 {
+  font-size: 30px;
+  margin-top: 0px;
   }
-article {
+
+.places article {
     width: 390px;
     padding: 20px;
     margin: 20px;
     border: 1px solid #FF5a5F;
     border-radius: 4px;
-    text-align: center;
 }
-article h2 {
+
+.places h2 {
     font-size: 30px;
-    padding: 0px;
-    margin: auto;
+    text-align: center;
 }
